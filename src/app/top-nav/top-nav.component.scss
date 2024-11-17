@@ -1,0 +1,43 @@
+.top-nav{
+    width: 100%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    height: 56px;
+    background-color: var(--color-navbar-background);
+    text-align: center;
+}
+
+.top-navbar-item{
+    color: var(--color-navbar-text);
+    font-size: 10px;
+    float: left;
+    width: 20%;
+    margin-top: 2px;
+}
+
+.top-navbar-item p{
+    margin-top: -8px;
+    line-height: 12px;
+}
+
+.top-navbar-item img{
+    height: 20px;
+    width: 20px;
+    filter: var(--filter-navbar-normal-img);
+    color: var(--color-navbar-text);
+}
+
+.top-nav table{
+    table-layout: fixed;
+    width: 100%;
+}
+
+.selected img{
+    filter: var(--filter-navbar-selected-img);
+    
+}
+
+.selected p{
+    color: var(--color-navbar-selected);
+}

@@ -1,0 +1,32 @@
+.footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 56px;
+    border-radius: 12px 12px 0 0;
+    background-color: var(--color-navbar-background);
+    text-align: center;
+  }
+
+.navbar-item{
+    color: var(--color-navbar-text);
+    font-size: 10px;
+    float: left;
+    width: 20%;
+    margin-top: 5px;
+}
+
+.navbar-item p{
+    margin-top: -10px;
+}
+
+.navbar-item img{
+    height: 20px;
+    width: 20px;
+}
+
+.footer table{
+    table-layout: fixed;
+    width: 100%;
+}

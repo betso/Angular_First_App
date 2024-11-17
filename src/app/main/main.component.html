@@ -1,0 +1,119 @@
+<mat-nav-list>
+    
+    <!-- Languages -->
+    <mat-list-item class="exp-list-item" (click)="langExpanded = !langExpanded" [disableRipple]="true">
+        <div class="exp-list-item-header-container">
+            <a matLine class="exp-list-item-header-title">{{'Languages' | translate}}</a>
+            <a matLine class="exp-list-item-header-desc">{{selectedLang.name | uppercase}}</a>
+        </div>
+        <span class="exp-list-item-icon-span">
+            <img *ngIf="!langExpanded" src="../../assets/images/down.png"/>
+            <img *ngIf="langExpanded" src="../../assets/images/up.png"/>
+        </span>
+    </mat-list-item>
+    <div [hidden]="!langExpanded" class="exp-list-item-selection-div">
+        <div></div>
+    </div>
+    
+    <div class="exp-list-item-separator"></div>
+    
+    <div [hidden]="!langExpanded">
+        <mat-selection-list multiple="false" hideSingleSelectionIndicator="true">
+            <mat-list-option *ngFor="let item of langs" (click)="langChanged(item.id)" [selected]="item.isChecked" class="exp-list-item-option">
+                <div class="exp-list-option-selection-line" [hidden]="!item.isChecked"></div>
+                <span class="exp-list-item-text">
+                    {{ item.name | uppercase }}
+                </span>
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+    <!-- Languages -->
+    
+    <!-- Layouts -->
+    <mat-list-item class="exp-list-item" (click)="layoutExpanded = !layoutExpanded" [disableRipple]="true">
+        <div class="exp-list-item-header-container">
+            <a matLine class="exp-list-item-header-title">{{'Layout' | translate}}</a>
+            <a matLine class="exp-list-item-header-desc">{{selectedLayout.name}}</a>
+        </div>
+        <span class="exp-list-item-icon-span">
+            <img *ngIf="!layoutExpanded" src="../../assets/images/down.png"/>
+            <img *ngIf="layoutExpanded" src="../../assets/images/up.png"/>
+        </span>
+    </mat-list-item>
+    <div [hidden]="!layoutExpanded" class="exp-list-item-selection-div">
+        <div></div>
+    </div>
+    
+    <div class="exp-list-item-separator"></div>
+    
+    <div [hidden]="!layoutExpanded">
+        <mat-selection-list multiple="false" hideSingleSelectionIndicator="true">
+            <mat-list-option *ngFor="let item of layouts" (click)="layoutChanged(item.id)" [selected]="item.isChecked" class="exp-list-item-option">
+                <div class="exp-list-option-selection-line" [hidden]="!item.isChecked"></div>
+                <span class="exp-list-item-text">
+                    {{ item.name }}
+                </span>
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+    <!-- Layouts -->
+
+    <!-- Odds -->
+    <mat-list-item class="exp-list-item" (click)="oddExpanded = !oddExpanded" [disableRipple]="true">
+        <div class="exp-list-item-header-container">
+            <a matLine class="exp-list-item-header-title">{{'Odds' | translate}}</a>
+            <a matLine class="exp-list-item-header-desc">{{selectedodd.name}}</a>
+        </div>
+        <span class="exp-list-item-icon-span">
+            <img *ngIf="!oddExpanded" src="../../assets/images/down.png"/>
+            <img *ngIf="oddExpanded" src="../../assets/images/up.png"/>
+        </span>
+    </mat-list-item>
+    <div [hidden]="!oddExpanded" class="exp-list-item-selection-div">
+        <div></div>
+    </div>
+    
+    <div class="exp-list-item-separator"></div>
+    
+    <div [hidden]="!oddExpanded">
+        <mat-selection-list multiple="false" hideSingleSelectionIndicator="true">
+            <mat-list-option *ngFor="let item of odds" (click)="oddChanged(item.id)" [selected]="item.isChecked" class="exp-list-item-option">
+                <div class="exp-list-option-selection-line" [hidden]="!item.isChecked"></div>
+                <span class="exp-list-item-text">
+                    {{ item.name }}
+                </span>
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+    <!-- Odds -->
+
+    <!-- Theme -->
+    <mat-list-item class="exp-list-item" (click)="themeExpanded = !themeExpanded" [disableRipple]="true">
+        <div class="exp-list-item-header-container">
+            <a matLine class="exp-list-item-header-title">{{'Theme' | translate}}</a>
+            <a matLine class="exp-list-item-header-desc">{{selectedTheme.name}}</a>
+        </div>
+        <span class="exp-list-item-icon-span">
+            <img *ngIf="!themeExpanded" src="../../assets/images/down.png"/>
+            <img *ngIf="themeExpanded" src="../../assets/images/up.png"/>
+        </span>
+    </mat-list-item>
+    <div [hidden]="!themeExpanded" class="exp-list-item-selection-div">
+        <div></div>
+    </div>
+    
+    <div class="exp-list-item-separator"></div>
+    
+    <div [hidden]="!themeExpanded">
+        <mat-selection-list multiple="false" hideSingleSelectionIndicator="true">
+            <mat-list-option *ngFor="let item of themes" (click)="themeChanged(item.id)" [selected]="item.isChecked" class="exp-list-item-option">
+                <div class="exp-list-option-selection-line" [hidden]="!item.isChecked"></div>
+                <span class="exp-list-item-text">
+                    {{ item.name }}
+                </span>
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+    <!-- Theme -->
+
+</mat-nav-list>

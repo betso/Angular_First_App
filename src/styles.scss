@@ -1,0 +1,30 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.light-theme{
+    --color-main-background: #fff;
+    --color-header-background: #101518;
+    --color-header-promo-background: #20272E;
+    --color-header-separatot: #323B43;
+    --color-navbar-background: #FBFCFD;
+    --color-navbar-text: #787E85;
+    --color-navbar-selected: #000;
+    --filter-navbar-selected-img: invert(0%) sepia(96%) saturate(16%) hue-rotate(246deg) brightness(0%) contrast(105%);
+    --filter-navbar-normal-img: invert(50%) sepia(15%) saturate(199%) hue-rotate(172deg) brightness(95%) contrast(86%);
+    --color-exp-separator: #66696A;
+    --color-exp-text: #000000;
+}
+
+.dark-theme{
+    --color-main-background: #000;
+    --color-header-background: #101518;
+    --color-header-promo-background: #20272E;
+    --color-header-separatot: #323B43;
+    --color-navbar-background: #222529;
+    --color-navbar-text: #787E85;
+    --color-navbar-selected: #fff;
+    --filter-navbar-selected-img: invert(100%) sepia(100%) saturate(0%) hue-rotate(247deg) brightness(111%) contrast(300%);
+    --filter-navbar-normal-img: invert(50%) sepia(15%) saturate(199%) hue-rotate(172deg) brightness(95%) contrast(86%);
+    --color-exp-separator: #303030;
+    --color-exp-text: #FFFFFF;
+}

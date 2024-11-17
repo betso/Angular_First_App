@@ -1,0 +1,86 @@
+mat-nav-list{
+    padding: 0;
+}
+
+.exp-list-item{
+    height: 58px;
+}
+
+.exp-list-item-header-container{
+    display: inline-grid;
+}
+
+.exp-list-item-header-title{
+    float: left;
+    font-size: 10px;
+    color: var(--color-navbar-text);
+    line-height: 14px;
+}
+
+.exp-list-item-header-desc{
+    float: left;
+    color: var(--color-exp-text);
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.exp-list-item-selection-div{
+    background-color: var(--color-navbar-background);
+    height: 58px;
+    width: 100%;
+    margin-top: -58px;
+}
+
+.exp-list-item-selection-div div{
+    width: 2px;
+    height: 100%;
+    background-color: #F40034;
+}
+
+.exp-list-item-separator{
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-exp-separator);
+}
+
+.exp-list-option-selection-line{
+    position:absolute;
+    left: 0;
+    top: 0;
+    height:58px;
+    width: 2px;
+    background-color: #039855;
+}
+
+.exp-list-item-text{
+    color: var(--color-exp-text);
+}
+
+.exp-list-item-icon-span{
+    float: right;
+    margin-top: 7px;
+}
+
+mat-icon{
+    float: right;
+    margin-top: 7px;
+    color: var(--color-navbar-text);
+}
+
+.mdc-list-item.mdc-list-item--with-one-line{
+    height: 58px;
+}
+.mat-mdc-nav-list .mat-mdc-list-item{
+    border-radius: 0;
+}
+.mat-mdc-focus-indicator{
+    background-color: #76b900;
+}
+
+mat-selection-list{
+    padding: 0;
+  }
+mat-list-option[aria-selected="true"] {
+    background-color: #54A883;
+  }

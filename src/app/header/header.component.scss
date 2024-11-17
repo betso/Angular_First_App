@@ -1,0 +1,108 @@
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px;
+    background-color: var(--color-header-background);
+    text-align: center;
+  }
+
+.header-left{
+  position: absolute;
+  margin: 14px 16px;
+  left: 0;
+}
+
+.header-right{
+  position: absolute;
+  margin: 14px 16px;
+  right: 0;
+  display: flex;
+  align-items: center;
+}
+
+img{
+    height: 32px;
+    width: 32px;
+    float: left;
+}
+
+.header-promos{
+  height: 32px;
+  margin: 0 0 0 8px;
+  border-radius: 19px;
+  background-color: var(--color-header-promo-background);
+  float: left;
+  padding: 0 10px 0 4px;
+  display: flex;
+  align-items: center;
+}
+
+.header-deposit{
+  height: 32px;
+  margin: 0 8px 0 0;
+  border-radius: 19px;
+  background-color: var(--color-header-promo-background);
+  float: left;
+  padding: 0 4px 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+.header-promos-img{
+  float: left;
+  height: 24px;
+  width: 24px;
+}
+
+.header-deposit-img{
+  float: left;
+  height: 20px;
+  width: 20px;
+}
+
+.header-promos p{
+  float: left;
+  color: white;
+  font-size: 12px;
+  margin: 0;
+  line-height: 24px;
+}
+
+.header-deposit p{
+  float: left;
+  color: white;
+  font-size: 16px;
+  margin: 0;
+  line-height: 24px;
+  margin: 0 4px 0 0;
+}
+
+.separator{
+  float: left;
+  background-color: var(--color-header-separatot);
+  height: 24px;
+  width: 1px;
+  margin: 0 4px 0 0;
+}
+
+.person-container{
+  float: left;
+  height: 32px;
+  width: 32px;
+}
+
+.person-container div{
+  height: 15px;
+  width: 15px;
+  background-color: #F40034;
+  border-color: #181A1E;
+  border-radius: 8px;
+  color: white;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+}
