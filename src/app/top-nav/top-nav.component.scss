@@ -6,12 +6,13 @@
     height: 56px;
     background-color: var(--color-navbar-background);
     text-align: center;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .top-navbar-item{
     color: var(--color-navbar-text);
     font-size: 10px;
-    float: left;
     width: 20%;
     margin-top: 2px;
 }

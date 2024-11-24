@@ -1,0 +1,26 @@
+<div class="exp-list-item" (click)="onExpandClick();">
+    <div class="exp-list-item-header-container">
+        <a matLine class="exp-list-item-header-title">{{title}}</a>
+        <a matLine class="exp-list-item-header-desc" [hidden]="!uppercaseEnabled">{{selectedItem.name | uppercase}}</a>
+        <a matLine class="exp-list-item-header-desc" [hidden]="uppercaseEnabled">{{selectedItem.name}}</a>
+    </div>
+    <span class="exp-list-item-icon-span">
+        <img *ngIf="!isExpanded" src="../../assets/images/down.png"/>
+        <img *ngIf="isExpanded" src="../../assets/images/up.png"/>
+    </span>
+</div>
+<div [hidden]="!isExpanded" class="exp-list-item-selection-div">
+    <div></div>
+</div>
+
+<div class="exp-list-item-separator"></div>
+
+<div [hidden]="!isExpanded">
+    <mat-selection-list multiple="false" hideSingleSelectionIndicator="true">
+        <mat-list-option *ngFor="let item of itemsSource" (click)="onItemClick(item.id)" [selected]="item.isChecked" class="exp-list-item-option">
+            <div class="exp-list-option-selection-line" [hidden]="!item.isChecked"></div>
+            <span class="exp-list-item-text" [hidden]="!uppercaseEnabled">{{ item.name | uppercase }}</span>
+            <span class="exp-list-item-text" [hidden]="uppercaseEnabled">{{ item.name }}</span>
+        </mat-list-option>
+    </mat-selection-list>
+</div>
