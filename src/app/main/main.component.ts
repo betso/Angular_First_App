@@ -1,23 +1,28 @@
-import {Component, inject } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {CommonModule } from '@angular/common';
 import {MatSelectModule} from '@angular/material/select';
-import {TranslateService, TranslateModule } from "@ngx-translate/core";
+import {TranslateModule } from "@ngx-translate/core";
 import {MatExpansionModule} from '@angular/material/expansion';
 import {ExpanderComponent} from '../controls/expander/expander.component';
+import {LangService} from '../services/lang.service';
+import {ThemeService} from '../services/theme.service';
 
 
 @Component({
   selector: 'app-main',
   standalone: true,
   imports: [MatListModule, MatIconModule, CommonModule, MatSelectModule, TranslateModule,MatExpansionModule, ExpanderComponent],
+  providers:[LangService, ThemeService],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
 
 export class MainComponent {
-  translate: TranslateService = inject(TranslateService);
+
+  langService = new LangService();
+  themeService = new ThemeService();
 
   langs = [  {id: 1, name: 'en', isChecked: false }, {id: 2, name: 'ka', isChecked: false } ];
   selectedLang: {id: number, name: string, isChecked:boolean};
@@ -35,18 +40,10 @@ export class MainComponent {
   selectedTheme: any;
   themeExpanded: boolean = false;
 
-  onLangChanged(item: any)
-  {
-    var current = this.langs.find(item => item.id == item.id);
-    this.translate.use(current.name.toLowerCase());
-    if (localStorage != undefined)
-      localStorage.setItem('lang', current.name.toLowerCase());
-  }
-
   ngOnInit()
   {
-    let l = localStorage.getItem('lang');
-    let t = localStorage.getItem('theme');
+    let l = this.langService.getLang();
+    let t = this.themeService.getTheme();
 
     this.selectedLayout = this.layouts[1];
     this.selectedodd = this.odds[0];
@@ -61,24 +58,18 @@ export class MainComponent {
     theme.isChecked = true;
   }
 
+  onLangChanged(item: any)
+  {
+    var current = this.langs.find(it => it.id == item.id);
+    this.langService.changeLang(current.name);
+  }
+
   onThemeChanged(item: any)
   {
     this.selectedTheme = item;
     this.themeExpanded = false;
 
-    this.changeTheme(item.name.toLowerCase() + '-theme');
-  }
-
-  changeTheme(name: string)
-  {
-    if (document.body.classList.contains('light-theme'))
-      document.body.classList.remove('light-theme');
-
-    if (document.body.classList.contains('dark-theme'))
-      document.body.classList.remove('dark-theme');
-
-    document.body.classList.add(name);
-    localStorage.setItem('theme', name);
+    this.themeService.changeTheme(item.name);
   }
 
   changeExpanded(name: string, expanded: boolean)
