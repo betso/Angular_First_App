@@ -25,7 +25,7 @@ export class MainComponent {
   themeService = new ThemeService();
 
   langs = [  {id: 1, name: 'en', isChecked: false }, {id: 2, name: 'ka', isChecked: false } ];
-  selectedLang: {id: number, name: string, isChecked:boolean};
+  selectedLang: any;
   langExpanded: boolean = false;
 
   layouts = [  {id: 1, name: 'Asian', isChecked: false }, {id: 2, name: 'European', isChecked: true } ];
@@ -39,6 +39,26 @@ export class MainComponent {
   themes = [  {id: 1, name: 'Dark', isChecked: false }, {id: 2, name: 'Light', isChecked: false } ];
   selectedTheme: any;
   themeExpanded: boolean = false;
+
+  // private languageEffect = effect(() =>
+  // {
+  //   console.log(`Language is: ${this.langExpanded()}`);
+  // });
+
+  // private layoutEffect = effect(() =>
+  // {
+  //   console.log(`Layout is: ${this.layoutExpanded()}`);
+  // });
+
+  // private oddEffect = effect(() =>
+  // {
+  //   console.log(`Odd is: ${this.oddExpanded()}`);
+  // });
+
+  // private themeEffect = effect(() =>
+  // {
+  //   console.log(`Theme is: ${this.themeExpanded()}`);
+  // });
 
   ngOnInit()
   {
@@ -66,9 +86,6 @@ export class MainComponent {
 
   onThemeChanged(item: any)
   {
-    this.selectedTheme = item;
-    this.themeExpanded = false;
-
     this.themeService.changeTheme(item.name);
   }
 
