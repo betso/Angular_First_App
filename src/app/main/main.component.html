@@ -1,7 +1,7 @@
 <div>
     <app-expander
         title="{{'Languages' | translate}}"
-        [isExpanded]="langExpanded"
+        [isExpanded]="isExpanded=='lang'"
         [itemsSource]="langs"
         [selectedItem]="selectedLang"
         [uppercaseEnabled]="true"
@@ -10,21 +10,21 @@
 
     <app-expander
         title="{{'Layout' | translate}}"
-        [isExpanded]="layoutExpanded"
+        [isExpanded]="isExpanded=='layout'"
         [itemsSource]="layouts"
         [selectedItem]="selectedLayout"
         (expandedChanged)="expLayout($event)"/>
 
     <app-expander
         title="{{'Odds' | translate}}"
-        [isExpanded]="oddExpanded"
+        [isExpanded]="isExpanded=='odd'"
         [itemsSource]="odds"
         [selectedItem]="selectedodd"
         (expandedChanged)="expOdd($event)"/>
 
     <app-expander
         title="{{'Theme' | translate}}"
-        [isExpanded]="themeExpanded"
+        [isExpanded]="isExpanded=='theme'"
         [itemsSource]="themes"
         [selectedItem]="selectedTheme"
         (selectedItemChanged)="onThemeChanged($event);"

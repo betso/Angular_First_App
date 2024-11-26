@@ -10,10 +10,4 @@ import { TranslateService, TranslateModule } from "@ngx-translate/core";
 })
 export class HeaderComponent {
   translate: TranslateService = inject(TranslateService);
-  translateText(lang: string)
-  {
-    this.translate.use(lang);
-    if (localStorage != undefined)
-      localStorage.setItem('lang', lang);
-  }
 }

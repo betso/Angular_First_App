@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, effect, signal} from '@angular/core';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {CommonModule } from '@angular/common';
@@ -24,36 +24,29 @@ export class MainComponent {
   langService = new LangService();
   themeService = new ThemeService();
 
+  isExpanded: string;
+
   langs = [  {id: 1, name: 'en', isChecked: false }, {id: 2, name: 'ka', isChecked: false } ];
   selectedLang: any;
-  langExpanded: boolean = false;
 
   layouts = [  {id: 1, name: 'Asian', isChecked: false }, {id: 2, name: 'European', isChecked: true } ];
-  selectedLayout: any;
-  layoutExpanded: boolean = false;
+  selectedLayout: any = this.layouts[1];
 
   odds = [  {id: 1, name: 'Decimal', isChecked: true }, {id: 2, name: 'Fraction', isChecked: false }, {id: 3, name: 'American', isChecked: false } ];
-  selectedodd: any;
-  oddExpanded: boolean = false;
+  selectedodd: any = this.odds[0];
 
   themes = [  {id: 1, name: 'Dark', isChecked: false }, {id: 2, name: 'Light', isChecked: false } ];
   selectedTheme: any;
-  themeExpanded: boolean = false;
+
+  constructor(){}
 
   ngOnInit()
   {
-    let l = this.langService.getLang();
-    let t = this.themeService.getTheme();
-
-    this.selectedLayout = this.layouts[1];
-    this.selectedodd = this.odds[0];
-    this.selectedTheme = this.themes[0];
-
-    let current = this.langs.find(lang => lang.name == l);
+    let current = this.langs.find(lang => lang.name == this.langService.getLang());
     this.selectedLang = current;
     current.isChecked = true;
 
-    let theme = this.themes.find(te => te.name.toLowerCase() + '-theme' == t);
+    let theme = this.themes.find(te => te.name.toLowerCase() + '-theme' == this.themeService.getTheme());
     this.selectedTheme = theme;
     theme.isChecked = true;
   }
@@ -69,66 +62,23 @@ export class MainComponent {
     this.themeService.changeTheme(item.name);
   }
 
-  changeExpanded(name: string, expanded: boolean)
-  {
-    switch(name)
-    {
-      case 'Languages':
-        this.langExpanded = expanded;
-        if (expanded)
-        {
-          this.layoutExpanded = false;
-          this.oddExpanded = false;
-          this.themeExpanded = false;
-        }
-        break;
-      case 'Layout':
-        if (expanded)
-        {
-          this.langExpanded = false;
-          this.oddExpanded = false;
-          this.themeExpanded = false;
-        }
-        this.layoutExpanded = expanded;
-        break;
-      case 'Odds':
-        if (expanded)
-        {
-          this.langExpanded = false;
-          this.layoutExpanded = false;
-          this.themeExpanded = false;
-        }
-        this.oddExpanded = expanded;
-        break;
-      case 'Theme':
-        if (expanded)
-        {
-          this.langExpanded = false;
-          this.layoutExpanded = false;
-          this.oddExpanded = false;
-        }
-        this.themeExpanded = expanded;
-        break;
-    }
-  }
-
   expLang(expanded: boolean)
   {
-    this.changeExpanded('Languages', expanded);
+    this.isExpanded = expanded ? 'lang' : "";
   }
 
   expLayout(expanded: boolean)
   {
-    this.changeExpanded('Layout', expanded);
+    this.isExpanded = expanded ? 'layout' : "";
   }
 
   expOdd(expanded: boolean)
   {
-    this.changeExpanded('Odds', expanded);
+    this.isExpanded = expanded ? 'odd' : "";
   }
 
   expTheme(expanded: boolean)
   {
-    this.changeExpanded('Theme', expanded);
+    this.isExpanded = expanded ? 'theme' : "";
   }
 }
