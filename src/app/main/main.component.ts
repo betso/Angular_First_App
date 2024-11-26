@@ -40,26 +40,6 @@ export class MainComponent {
   selectedTheme: any;
   themeExpanded: boolean = false;
 
-  // private languageEffect = effect(() =>
-  // {
-  //   console.log(`Language is: ${this.langExpanded()}`);
-  // });
-
-  // private layoutEffect = effect(() =>
-  // {
-  //   console.log(`Layout is: ${this.layoutExpanded()}`);
-  // });
-
-  // private oddEffect = effect(() =>
-  // {
-  //   console.log(`Odd is: ${this.oddExpanded()}`);
-  // });
-
-  // private themeEffect = effect(() =>
-  // {
-  //   console.log(`Theme is: ${this.themeExpanded()}`);
-  // });
-
   ngOnInit()
   {
     let l = this.langService.getLang();
