@@ -1,41 +1,35 @@
-import { Injectable } from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
+  currentTheme = signal('dark-theme');
 
-  constructor() { }
+  constructor()
+  {
+    effect(() =>
+    {
+      console.log(this.currentTheme());
+      if (localStorage != undefined)
+      {
+        if (document.body.classList.contains('light-theme'))
+          document.body.classList.remove('light-theme');
 
+        if (document.body.classList.contains('dark-theme'))
+          document.body.classList.remove('dark-theme');
+
+        document.body.classList.add(this.currentTheme());
+        localStorage.setItem('theme', this.currentTheme());
+      }
+    });
+  }
+  
   init()
   {
-    var theme = this.getTheme();
-      if (theme != null)
-      {
-        document.body.classList.remove('light-theme');
-        document.body.classList.remove('dark-theme');
-        document.body.classList.add(theme);
-      }
-  }
-
-  changeTheme(theme: string)
-  {
-    theme = theme.toLowerCase()  + '-theme';
-
-    if (document.body.classList.contains('light-theme'))
-      document.body.classList.remove('light-theme');
-
-    if (document.body.classList.contains('dark-theme'))
-      document.body.classList.remove('dark-theme');
-
-    document.body.classList.add(theme);
-    localStorage.setItem('theme', theme);
-  }
-
-  getTheme() : string
-  {
-    let l = localStorage.getItem('theme');
-
-    return l;
+    this.currentTheme.set(localStorage.getItem('theme'));
+    document.body.classList.remove('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.add(this.currentTheme());
   }
 }

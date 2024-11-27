@@ -20,18 +20,12 @@ import {ThemeService} from './services/theme.service';
 })
 
 export class AppComponent {
-  langService = new LangService();
-  themeService = new ThemeService();
-
-  constructor()
-  {
-    this.langService.init();
-    
-  };
+  constructor(private langService: LangService, private themeService: ThemeService){}
+  
   ngOnInit() {
     try
     {
-      this.langService.loadCurrentLang();
+      this.langService.init();
       this.themeService.init();
     }
     catch(e)

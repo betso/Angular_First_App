@@ -21,8 +21,7 @@ import {ThemeService} from '../services/theme.service';
 
 export class MainComponent {
 
-  langService = new LangService();
-  themeService = new ThemeService();
+  constructor(private langService: LangService, private themeService: ThemeService){}
 
   isExpanded: string;
 
@@ -38,15 +37,17 @@ export class MainComponent {
   themes = [  {id: 1, name: 'Dark', isChecked: false }, {id: 2, name: 'Light', isChecked: false } ];
   selectedTheme: any;
 
-  constructor(){}
+  
 
   ngOnInit()
   {
-    let current = this.langs.find(lang => lang.name == this.langService.getLang());
+    let l = localStorage?.getItem('lang');
+    let current = this.langs.find(lang => lang.name == l);
     this.selectedLang = current;
     current.isChecked = true;
 
-    let theme = this.themes.find(te => te.name.toLowerCase() + '-theme' == this.themeService.getTheme());
+    let t = localStorage?.getItem('theme');
+    let theme = this.themes.find(te => te.name.toLowerCase() + '-theme' == t);
     this.selectedTheme = theme;
     theme.isChecked = true;
   }
@@ -54,12 +55,12 @@ export class MainComponent {
   onLangChanged(item: any)
   {
     var current = this.langs.find(it => it.id == item.id);
-    this.langService.changeLang(current.name);
+    this.langService.currentLang.set(current.name);
   }
 
   onThemeChanged(item: any)
   {
-    this.themeService.changeTheme(item.name);
+    this.themeService.currentTheme.set(item.name.toLowerCase() + '-theme');
   }
 
   expLang(expanded: boolean)

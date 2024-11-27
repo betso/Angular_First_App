@@ -1,38 +1,33 @@
-import { inject, Injectable } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
+import { producerUpdatesAllowed } from '@angular/core/primitives/signals';
 import {TranslateService} from "@ngx-translate/core";
 
 @Injectable({
   providedIn: 'root'
 })
-export class LangService {
-
-  constructor() { }
-
+export class LangService
+{
   translate: TranslateService = inject(TranslateService);
+  currentLang = signal('en');
+
+  constructor()
+  {
+    effect(() =>
+    {
+      console.log(this.currentLang());
+      if (localStorage != undefined)
+      {
+        this.translate.use(this.currentLang().toLowerCase());
+        localStorage.setItem('lang', this.currentLang().toLowerCase());
+      }
+    });
+  }
 
   init()
   {
+    this.currentLang.set(localStorage?.getItem('lang'));
     this.translate.addLangs(['en', 'ka']);
     this.translate.setDefaultLang('en');
-  }
-
-  changeLang(lang: string)
-  {
-    this.translate.use(lang.toLowerCase());
-    if (localStorage != undefined)
-      localStorage.setItem('lang', lang.toLowerCase());
-  }
-
-  getLang() : string
-  {
-    let l = localStorage.getItem('lang');
-
-    return l;
-  }
-
-  loadCurrentLang()
-  {
-    let lang = localStorage.getItem('lang');
-    this.translate.use(lang.toLowerCase());
+    this.translate.use(this.currentLang().toLowerCase());
   }
 }
