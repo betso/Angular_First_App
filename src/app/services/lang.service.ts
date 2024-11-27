@@ -1,5 +1,5 @@
+import { DOCUMENT } from '@angular/common';
 import { effect, inject, Injectable, signal } from '@angular/core';
-import { producerUpdatesAllowed } from '@angular/core/primitives/signals';
 import {TranslateService} from "@ngx-translate/core";
 
 @Injectable({
@@ -8,7 +8,8 @@ import {TranslateService} from "@ngx-translate/core";
 export class LangService
 {
   translate: TranslateService = inject(TranslateService);
-  currentLang = signal('en');
+  document = inject(DOCUMENT);
+  currentLang = signal(this.document?.defaultView?.localStorage?.getItem('lang') || 'en');
 
   constructor()
   {
@@ -25,7 +26,6 @@ export class LangService
 
   init()
   {
-    this.currentLang.set(localStorage?.getItem('lang'));
     this.translate.addLangs(['en', 'ka']);
     this.translate.setDefaultLang('en');
     this.translate.use(this.currentLang().toLowerCase());

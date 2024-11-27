@@ -41,13 +41,11 @@ export class MainComponent {
 
   ngOnInit()
   {
-    let l = localStorage?.getItem('lang');
-    let current = this.langs.find(lang => lang.name == l);
+    let current = this.langs.find(lang => lang.name == this.langService.currentLang());
     this.selectedLang = current;
     current.isChecked = true;
 
-    let t = localStorage?.getItem('theme');
-    let theme = this.themes.find(te => te.name.toLowerCase() + '-theme' == t);
+    let theme = this.themes.find(te => te.name.toLowerCase() + '-theme' == this.themeService.currentTheme());
     this.selectedTheme = theme;
     theme.isChecked = true;
   }

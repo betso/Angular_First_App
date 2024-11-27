@@ -1,10 +1,12 @@
-import { effect, Injectable, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { effect, inject, Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  currentTheme = signal('dark-theme');
+  document = inject(DOCUMENT);
+  currentTheme = signal(this.document?.defaultView?.localStorage?.getItem('theme') || 'dark-theme');
 
   constructor()
   {
@@ -27,7 +29,6 @@ export class ThemeService {
   
   init()
   {
-    this.currentTheme.set(localStorage.getItem('theme'));
     document.body.classList.remove('light-theme');
     document.body.classList.remove('dark-theme');
     document.body.classList.add(this.currentTheme());
